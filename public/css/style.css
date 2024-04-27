@@ -1,0 +1,52 @@
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 20px;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+}
+
+#grid div {
+    border: 1px solid #ccc;
+    width: 40px;
+    height: 40px;
+}
+
+#info-panel {
+    margin-left: 20px;
+}
+
+#info-panel p, #info-panel button {
+    font-size: 1.2rem;
+    margin: 5px;
+    text-align: left;
+}
+
+.cell-floor {
+    background-color: #e2e2e2;
+}
+
+.cell-wall {
+    background-color: #666;
+}
+
+.cell-player {
+    background-color: #4CAF50;
+}
+
+.cell-enemy {
+    background-color: #F44336;
+}
+
+.cell-item {
+    background-color: #FFEB3B;
+}
+
+.cell-ladder {
+    background-color: #9C27B0;
+}
