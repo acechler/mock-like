@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.getElementById('grid');
-    const healthDisplay = document.getElementById('health');
-    const levelDisplay = document.getElementById('level');
-    const nextLevelButton = document.getElementById('next-level');
+    const grid = document.querySelector('.grid');
+    const healthDisplay = document.querySelector('.health');
+    const levelDisplay = document.querySelector('.level');
+    const nextLevelButton = document.querySelector('.next-level');
 
     const gridWidth = 10;
     const gridHeight = 10;
@@ -64,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeGrid();
         window.addEventListener('keydown', handleKeyPress);
     }
+    
+    function placePlayer() {
+        cells[playerPosition].classList.add('cell-player');
+    }
 
     function handleKeyPress(e) {
         let newPlayerPosition = playerPosition;
@@ -119,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLevel++;
         levelDisplay.textContent = 'Level: ' + currentLevel;
         initializeGrid();
+        placePlayer();
     }
 
     nextLevelButton.addEventListener('click', goToNextLevel);
