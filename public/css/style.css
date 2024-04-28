@@ -27,6 +27,23 @@
     text-align: left;
 }
 
+
+.sprite{
+    width: 24;
+    height: 24;
+    background-image: url('/public/img/spr_rogue_template.png');
+    background-repeat: no-repeat;
+}
+
+.player{
+    background-position: 0 0;
+}
+
+.player-walking{
+    background-position: -40px 0;
+}
+
+
 .cell-floor {
     background-color: #e2e2e2;
 }
