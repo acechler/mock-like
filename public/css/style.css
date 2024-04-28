@@ -12,7 +12,7 @@
 }
 
 .grid div {
-    border: 1px solid #ccc;
+    border: 1px solid #8b8b8b;
     width: 40px;
     height: 40px;
 }
@@ -31,7 +31,7 @@
 
 
 .cell-floor {
-    background-color: #e2e2e2;
+    background-color: #b8b8b8;
 }
 
 .cell-wall {

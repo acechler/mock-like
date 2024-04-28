@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < gridWidth * gridHeight; i++) {
       ///// for the first cell of the grid, and the cell position is less then gridwidth*gridheight
       const cell = document.createElement("div"); // Create a new div element called cell
+      cell.classList.add("cell-floor");
       grid.appendChild(cell); // Append cell to the grid element.
       cells.push(cell); // Push cell into the cell array
     } // Move to the next cell
