@@ -50,7 +50,8 @@
 }
 
 .cell-item {
-    background-color: #FFEB3B;
+    background-image: url('/img/spr_food.png');
+    background-repeat: no-repeat;
 }
 
 .cell-ladder {
