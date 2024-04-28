@@ -91,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function movePlayer(newPlayerPosition) {
-        if (cells[newPlayerPosition].classList.contains('cell-enemy')) {
-            handleCombat(newPlayerPosition);
-        } else if (cells[newPlayerPosition].classList.contains('cell-item')) {
-            pickUpItem(newPlayerPosition);
-        } else if (cells[newPlayerPosition].classList.contains('cell-ladder')) {
+        if (cells[newPlayerPosition].classList.contains('cell-enemy')) {                                                    //// Check if player position collides with the following classes
+            handleCombat(newPlayerPosition);                                                                                // Enemy    : Initiate Combat        
+        } else if (cells[newPlayerPosition].classList.contains('cell-item')) {                                              // Item     : Pick up Item 
+            pickUpItem(newPlayerPosition);                                                                                  // Ladder   : Goto next level
+        } else if (cells[newPlayerPosition].classList.contains('cell-ladder')) {                                            // Otherwise: Update cells to move player 
             goToNextLevel();
         } else {
             cells[playerPosition].classList.remove('cell-player');

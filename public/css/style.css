@@ -28,20 +28,6 @@
 }
 
 
-.sprite{
-    width: 24;
-    height: 24;
-    background-image: url('/public/img/spr_rogue_template.png');
-    background-repeat: no-repeat;
-}
-
-.player{
-    background-position: 0 0;
-}
-
-.player-walking{
-    background-position: -40px 0;
-}
 
 
 .cell-floor {
@@ -53,7 +39,8 @@
 }
 
 .cell-player {
-    background-color: #4CAF50;
+    background-image: url('/img/spr_rogue_template.png');
+    background-repeat: no-repeat;
 }
 
 .cell-enemy {
