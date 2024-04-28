@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const grid = document.querySelector('.grid');                               // Access grid class from DOM
     const healthDisplay = document.querySelector('.health');                    // Access health Text from DOM
     const levelDisplay = document.querySelector('.level');                      // Access Level Text From DOM
@@ -6,10 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gridWidth = 10;
     const gridHeight = 10;
+    const takenCellsSet = new Set([22]);                                        // Set that contains positions that were already taken
     let cells = [];                                                             // Array that stores each grid
     let playerPosition = 22;                                                    // Position of the player in the grid
     let currentLevel = 1;                                                       // The starting level
     let playerHealth = 100;                                                     // The starting health
+
+
+    function randomNumberGenerator(){
+        let position = Math.floor(Math.random() * gridWidth * gridHeight); 
+        if(!takenCellsSet[position]){
+            takenCellsSet.add(position);
+            return position;
+        } else{
+            position = randomNumberGenerator();
+        }
+    }
+
 
     function initializeGrid() {
         grid.innerHTML = '';                                                    // Assign an empty string to the starting grid.
@@ -23,33 +37,36 @@ document.addEventListener('DOMContentLoaded', () => {
         placeItems();
         placeEnemies();
         placeLadder();
+        console.log(cells);
+        console.log(takenCellsSet);
         updateGridDisplay();
     }
 
     function placeWalls() {
         for (let i = 0; i < 20; i++) {                                                  ///// For index is less than 20             
-            const wallPosition = Math.floor(Math.random() * gridWidth * gridHeight);    // Find random position in cell array bound to grid size
+            const wallPosition = randomNumberGenerator();                               // Find random position in cell array bound to grid size                                    
             cells[wallPosition].classList.add('cell-wall');                             // Assign random position to cell and place wall in it
-        }                                                                                
+        }                                                                           
     }
 
     function placeItems() {                                         
         for (let i = 0; i < 10; i++) {                                                  ///// For index is less than 10
-            const itemPosition = Math.floor(Math.random() * gridWidth * gridHeight);    // Find random position in cell array bound to grid size
+            const itemPosition = randomNumberGenerator();                               // Find random position in cell array bound to grid size
             cells[itemPosition].classList.add('cell-item');                             // Assign random position to cell and place item in it
         }                                                                               
     }
 
     function placeEnemies() {
-        for (let i = 0; i < 5; i++) {  // 5 random enemies                              ///// For index is less than 5 
-            const enemyPosition = Math.floor(Math.random() * gridWidth * gridHeight);   // Find random position in cell array bound to grid size
+        for (let i = 0; i < 5; i++) {                                                   ///// For index is less than 5 
+            const enemyPosition = randomNumberGenerator();                              // Find random position in cell array bound to grid size
             cells[enemyPosition].classList.add('cell-enemy');                           // Assign random position to cell and place enemy in it
         }
     }
 
     function placeLadder() {
-        const ladderPosition = Math.floor(Math.random() * gridWidth * gridHeight);      // Find random position in cell array bound to grid size
+        const ladderPosition = randomNumberGenerator();                                 // Find random position in cell array bound to grid size
         cells[ladderPosition].classList.add('cell-ladder');                             // Assign random position to cell and place a ladder in it.
+        
     }
 
     function updateGridDisplay() {
@@ -105,12 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleCombat(enemyPosition) {
-        // Simple combat logic here
         console.log('Combat with enemy at position', enemyPosition);
-        // Reduce health as an example
         playerHealth -= 10;
         healthDisplay.textContent = 'Health: ' + playerHealth;
-        // Remove enemy after combat for simplicity
         cells[enemyPosition].classList.remove('cell-enemy');
     }
 

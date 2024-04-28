@@ -44,7 +44,8 @@
 }
 
 .cell-enemy {
-    background-color: #F44336;
+    background-image: url('/img/spr_slime.png');
+    background-repeat: no-repeat;
 }
 
 .cell-item {
@@ -52,5 +53,6 @@
 }
 
 .cell-ladder {
-    background-color: #9C27B0;
+    background-image: url('/img/spr_ladder.png');
+    background-repeat: no-repeat;
 }
