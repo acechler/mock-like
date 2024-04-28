@@ -35,7 +35,8 @@
 }
 
 .cell-wall {
-    background-color: #666;
+    background-image: url('/img/spr_wall.png');
+    background-repeat: no-repeat;
 }
 
 .cell-player {
