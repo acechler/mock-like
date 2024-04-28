@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.querySelector('.grid');
-    const healthDisplay = document.querySelector('.health');
-    const levelDisplay = document.querySelector('.level');
+    const grid = document.querySelector('.grid');                               // Access grid class from DOM
+    const healthDisplay = document.querySelector('.health');                    // Access health Text from DOM
+    const levelDisplay = document.querySelector('.level');                      // Access Level Text From DOM
     const nextLevelButton = document.querySelector('.next-level');
 
     const gridWidth = 10;
     const gridHeight = 10;
-    let cells = [];
-    let playerPosition = 22;  // Adjusted for a more central start if needed
-    let currentLevel = 1;
-    let playerHealth = 100;
+    let cells = [];                                                             // Array that stores each grid
+    let playerPosition = 22;                                                    // Position of the player in the grid
+    let currentLevel = 1;                                                       // The starting level
+    let playerHealth = 100;                                                     // The starting health
 
     function initializeGrid() {
-        grid.innerHTML = '';
-        cells = [];
-        for (let i = 0; i < gridWidth * gridHeight; i++) {
-            const cell = document.createElement('div');
-            grid.appendChild(cell);
-            cells.push(cell);
-        }
+        grid.innerHTML = '';                                                    // Assign an empty string to the starting grid.
+        cells = [];                                                             // Reassign cells to be an empty array
+        for (let i = 0; i < gridWidth * gridHeight; i++) {                      ///// for the first cell of the grid, and the cell position is less then gridwidth*gridheight
+            const cell = document.createElement('div');                         // Create a new div element called cell
+            grid.appendChild(cell);                                             // Append cell to the grid element.
+            cells.push(cell);                                                   // Push cell into the cell array
+        }                                                                       // Move to the next cell
         placeWalls();
         placeItems();
         placeEnemies();
@@ -27,35 +27,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function placeWalls() {
-        for (let i = 0; i < 20; i++) {  // 20 random walls
-            const wallPosition = Math.floor(Math.random() * gridWidth * gridHeight);
-            cells[wallPosition].classList.add('cell-wall');
-        }
+        for (let i = 0; i < 20; i++) {                                                  ///// For index is less than 20             
+            const wallPosition = Math.floor(Math.random() * gridWidth * gridHeight);    // Find random position in cell array bound to grid size
+            cells[wallPosition].classList.add('cell-wall');                             // Assign random position to cell and place wall in it
+        }                                                                                
     }
 
-    function placeItems() {
-        for (let i = 0; i < 10; i++) {  // 10 random items
-            const itemPosition = Math.floor(Math.random() * gridWidth * gridHeight);
-            cells[itemPosition].classList.add('cell-item');
-        }
+    function placeItems() {                                         
+        for (let i = 0; i < 10; i++) {                                                  ///// For index is less than 10
+            const itemPosition = Math.floor(Math.random() * gridWidth * gridHeight);    // Find random position in cell array bound to grid size
+            cells[itemPosition].classList.add('cell-item');                             // Assign random position to cell and place item in it
+        }                                                                               
     }
 
     function placeEnemies() {
-        for (let i = 0; i < 5; i++) {  // 5 random enemies
-            const enemyPosition = Math.floor(Math.random() * gridWidth * gridHeight);
-            cells[enemyPosition].classList.add('cell-enemy');
+        for (let i = 0; i < 5; i++) {  // 5 random enemies                              ///// For index is less than 5 
+            const enemyPosition = Math.floor(Math.random() * gridWidth * gridHeight);   // Find random position in cell array bound to grid size
+            cells[enemyPosition].classList.add('cell-enemy');                           // Assign random position to cell and place enemy in it
         }
     }
 
     function placeLadder() {
-        const ladderPosition = Math.floor(Math.random() * gridWidth * gridHeight);
-        cells[ladderPosition].classList.add('cell-ladder');
+        const ladderPosition = Math.floor(Math.random() * gridWidth * gridHeight);      // Find random position in cell array bound to grid size
+        cells[ladderPosition].classList.add('cell-ladder');                             // Assign random position to cell and place a ladder in it.
     }
 
     function updateGridDisplay() {
-        cells.forEach((cell, index) => {
-            if (index === playerPosition) {
-                cell.classList.add('cell-player');
+        cells.forEach((cell, index) => {                                                //// Foreach cell in cells array, pass player position
+            if (index === playerPosition) {                                             // If the playersPosition is found in cell array
+                cell.classList.add('cell-player');                                      // Add the cell player in it.
             }
         });
     }
@@ -71,11 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleKeyPress(e) {
         let newPlayerPosition = playerPosition;
-        switch (e.key) {
-            case 'ArrowUp':
-                if (playerPosition >= gridWidth) newPlayerPosition -= gridWidth;
+        switch (e.key) {                                                                                               
+            case 'ArrowUp':                                                                                             
+                if (playerPosition >= gridWidth) newPlayerPosition -= gridWidth;                                        
                 break;
-            case 'ArrowDown':
+            case 'ArrowDown':                                                                                                    
                 if (playerPosition < gridWidth * (gridHeight - 1)) newPlayerPosition += gridWidth;
                 break;
             case 'ArrowLeft':
