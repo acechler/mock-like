@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (playerPosition % gridWidth !== gridWidth - 1) newPlayerPosition += 1;
                 break;
         }
-        if (newPlayerPosition !== playerPosition && !cells[newPlayerPosition].classList.contains('cell-wall')) {
-            movePlayer(newPlayerPosition);
+        if (newPlayerPosition !== playerPosition && !cells[newPlayerPosition].classList.contains('cell-wall')) {            //// Check if the new player is not equal to the previous player position, Check if cell contains a wall.
+            movePlayer(newPlayerPosition);                                                                                  // Allow player to move.
         }
     }
 
